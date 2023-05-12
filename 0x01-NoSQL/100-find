@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+mongo $1 <<EOF
+use $2
+db.school.find({"name": /^Holberton/})
+EOF
+
