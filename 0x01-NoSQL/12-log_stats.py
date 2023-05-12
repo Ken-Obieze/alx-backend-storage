@@ -9,6 +9,7 @@ def print_stats(collection):
     total_logs = collection.count_documents({})
 
     print(f"{total_logs} logs")
+    print("Methods:")
 
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
 
