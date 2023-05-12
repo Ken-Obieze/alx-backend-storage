@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
+// lists all documents with name starting by Holberton in collection school
 
-mongo $1 <<EOF
-use $2
 db.school.find({"name": /^Holberton/})
-EOF
 
