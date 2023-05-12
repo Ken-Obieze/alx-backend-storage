@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Module to change all topics to base name."""
 
 
 def update_topics(mongo_collection, name, topics):
@@ -17,4 +18,4 @@ def update_topics(mongo_collection, name, topics):
         {"name": name},
         {"$set": {"topics": topics}}
     )
-    return result
+    return result.modified_count
