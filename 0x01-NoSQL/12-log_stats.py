@@ -18,7 +18,7 @@ def print_stats(collection):
         print(f"\t{count}\t{method}")
 
     count = collection.count_documents({"method": "GET", "path": "/status"})
-    print(f"\t{count}\tmethod=GET, path=/status")
+    print(f"{count} status check")
 
 if __name__ == '__main__':
     client = MongoClient('localhost', 27017)
