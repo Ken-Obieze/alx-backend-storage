@@ -20,7 +20,7 @@ def print_stats(collection):
     print(f"\t{count}\tmethod=GET, path=/status")
 
 if __name__ == '__main__':
-    with MongoClient() as client:
-        db = client.logs
-        collection = db.nginx
-        print_stats(collection)
+    client = MongoClient('localhost', 27017)
+    db = client.logs
+    collection = db.nginx
+    print_stats(collection)
