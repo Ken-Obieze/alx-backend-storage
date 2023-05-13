@@ -12,7 +12,7 @@ class Cache:
     """
     A Redis-based cache class.
     """
-    def __init__(self):
+    def __init__(self) -> None:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
@@ -38,7 +38,7 @@ class Cache:
         else:
             return data
 
-    def store(self, data) -> str:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         Store data in cache and return the key.
         """
@@ -46,7 +46,7 @@ class Cache:
         self._redis.set(key, self._serialize(data))
         return key
 
-    def get(self, key: str, fn: Callable = None):
+    def get(self, key: str, fn: Callable = None) -> Union[str, bytes, int, float, None]:
         """
         Get data from cache given a key.
         """
@@ -56,7 +56,7 @@ class Cache:
         else:
             return self._deserialize(data, fn)
 
-    def get_str(self, key: str):
+    def get_str(self, key: str) -> Union[str, None]:
         """
         Get string data from cache given a key.
         """
