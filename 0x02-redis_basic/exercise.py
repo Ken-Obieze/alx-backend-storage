@@ -105,6 +105,16 @@ def store_data(data: str) -> str:
     """
     return Cache().store(data)
 
+def replay(func):
+    inputs_key = f"{func.__qualname__}:inputs"
+    outputs_key = f"{func.__qualname__}:outputs"
+    inputs = redis_client.lrange(inputs_key, 0, -1)
+    outputs = redis_client.lrange(outputs_key, 0, -1)
+
+    print(f"{func.__qualname__} was called {len(inputs)} times:")
+    for args, output in zip(inputs, outputs):
+        print(f"{func.__qualname__}(*{args.decode('utf-8').strip()},) -> {output.decode('utf-8').strip()}")
+
 
 def get_page(url: str) -> str:
     """
